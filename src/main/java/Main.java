@@ -24,7 +24,7 @@ public class Main {
                 int op = sc.nextInt();
                 sc.nextLine();
                 if (op == 4) {
-                    System.out.print("\n Até logo!");
+                    ArtPrinter.printArt();
                     System.exit(0);
                 }
                 switch (op) {
@@ -73,6 +73,7 @@ public class Main {
 
                 switch (op) {
                     case 1:
+
 
                 }
 
