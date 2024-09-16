@@ -1,30 +1,26 @@
 import java.util.List;
 
 public class UsuarioService {
-    private final Persistencia<Usuario> persistencia;
+    private final PersistenciaUsuario persistenciaUsuario;
 
-    public UsuarioService(Persistencia<Usuario> persistencia) {
-        this.persistencia = persistencia;
+    public UsuarioService(PersistenciaUsuario persistenciaUsuario) {
+        this.persistenciaUsuario = persistenciaUsuario;
     }
 
     public boolean salvarUsuario(Usuario usuario) {
-        return persistencia.save(usuario);
+        return persistenciaUsuario.save(usuario);
     }
 
     public boolean atualizarUsuario(Usuario usuario) {
-        return persistencia.atualizar(usuario);
+        return persistenciaUsuario.atualizar(usuario);
     }
 
     public List<Usuario> listarUsuarios() {
-        return persistencia.listar();
+        return persistenciaUsuario.listar();
     }
 
     public boolean excluirUsuario(String username) {
-        return ((UsuarioHSQL) persistencia).remover(username);
-    }
-
-    public boolean alterarSenha(Usuario usuario) {
-        return persistencia.atualizar(usuario);
+        return persistenciaUsuario.remover(username);
     }
 
     public boolean login(String username, String password) {
@@ -36,4 +32,6 @@ public class UsuarioService {
         }
         return false;
     }
+
+
 }

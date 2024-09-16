@@ -237,7 +237,7 @@ public class TUI {
         String password = scanner.nextLine();
 
         Usuario usuario = new Usuario(username, password);
-        boolean sucesso = usuarioService.alterarSenha(usuario);
+        boolean sucesso = usuarioService.atualizarUsuario(usuario);
 
         if (sucesso) {
             System.out.println("Senha alterada com sucesso!");

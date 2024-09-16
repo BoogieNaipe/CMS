@@ -3,9 +3,6 @@ public class Main {
         UsuarioHSQL usuarioHSQL = new UsuarioHSQL();
         ConteudoHSQL conteudoHSQL = new ConteudoHSQL();
 
-        usuarioHSQL.criarTabelas();
-        conteudoHSQL.criarTabelas();
-
         UsuarioService usuarioService = new UsuarioService(usuarioHSQL);
         ConteudoService conteudoService = new ConteudoService(conteudoHSQL);
 
