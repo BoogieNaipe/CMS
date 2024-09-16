@@ -24,7 +24,7 @@ public class UsuarioService {
     public boolean login(String username, String password) {
         List<Usuario> usuarios = listarUsuarios();
         for (Usuario usuario : usuarios) {
-            if (usuario.getUsername().equals(username) && usuario.getPassword().equals(password)) {
+            if (usuario.getUsuario().equals(username) && usuario.getPassword().equals(password)) {
                 return true;
             }
         }

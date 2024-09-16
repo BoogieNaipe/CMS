@@ -8,7 +8,7 @@ public class ConteudoHSQL {
 
     public Connection getConexao() throws SQLException {
         if (conexao == null) {
-            conexao = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/CMS", "admin", "admin");
+            conexao = DriverManager.getConnection("jdbc:hsqldb:file:CMS", "admin", "admin");
         }
         return conexao;
     }

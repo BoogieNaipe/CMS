@@ -148,13 +148,38 @@ public class TUI {
     }
 
     private void atualizarConteudo() {
-        // Implementação necessária
-        System.out.println("Funcionalidade ainda não implementada.");
+        System.out.println("Digite o ID do conteúdo a ser atualizado:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Digite o novo título do conteúdo:");
+        String titulo = scanner.nextLine();
+        System.out.println("Digite o novo texto do conteúdo:");
+        String texto = scanner.nextLine();
+        System.out.println("Digite o novo nome do autor (usuário):");
+        String autor = scanner.nextLine();
+
+        Conteudo conteudo = new Conteudo(id, titulo, texto, autor);
+        boolean sucesso = conteudoService.atualizarConteudo(conteudo);
+
+        if (sucesso) {
+            System.out.println("Conteúdo atualizado com sucesso!");
+        } else {
+            System.out.println("Erro ao atualizar conteúdo.");
+        }
     }
 
     private void excluirConteudo() {
-        // Implementação necessária
-        System.out.println("Funcionalidade ainda não implementada.");
+        System.out.println("Digite o ID do conteúdo a ser excluído:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        boolean sucesso = conteudoService.excluirConteudo(id);
+
+        if (sucesso) {
+            System.out.println("Conteúdo excluído com sucesso!");
+        } else {
+            System.out.println("Erro ao excluir conteúdo.");
+        }
     }
 
     private void criarUsuario() {

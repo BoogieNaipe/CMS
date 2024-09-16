@@ -7,7 +7,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getUsername() {
+    public String getUsuario() {
         return username;
     }
 
@@ -15,7 +15,7 @@ public class Usuario {
         return password;
     }
 
-    public void setUsername(String username) {
+    public void setUsuario(String username) {
         this.username = username;
     }
 

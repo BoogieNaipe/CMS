@@ -10,7 +10,7 @@ public class ConteudoService {
         this.conteudoHSQL = conteudoHSQL;
     }
 
-        public boolean salvarConteudo(Conteudo conteudo) {
+    public boolean salvarConteudo(Conteudo conteudo) {
         String sql = "INSERT INTO Conteudo (titulo, texto, autor) VALUES (?, ?, ?)";
 
         try (Connection conn = conteudoHSQL.getConexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -44,6 +44,33 @@ public class ConteudoService {
             }
         } catch (SQLException e) {
             System.out.println("Erro ao listar os conteúdos: " + e.getMessage());
+        }
+    }
+
+    public boolean atualizarConteudo(Conteudo conteudo) {
+        String sql = "UPDATE Conteudo SET titulo = ?, texto = ?, autor = ? WHERE id = ?";
+        try (Connection conn = conteudoHSQL.getConexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, conteudo.getTitulo());
+            stmt.setString(2, conteudo.getTexto());
+            stmt.setString(3, conteudo.getAutor());
+            stmt.setInt(4, conteudo.getId());
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar o conteúdo: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean excluirConteudo(int id) {
+        String sql = "DELETE FROM Conteudo WHERE id = ?";
+        try (Connection conn = conteudoHSQL.getConexao(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Erro ao excluir o conteúdo: " + e.getMessage());
+            return false;
         }
     }
 }
