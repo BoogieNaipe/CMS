@@ -1,13 +1,33 @@
-
+import java.util.List;
 
 public class UsuarioService {
-    public boolean login(String username, String password) {
+    private Persistencia<Usuario> persistencia;
 
-        if (username.equals("admin") && password.equals("admin")) {
+    public UsuarioService(Persistencia<Usuario> persistencia) {
+        this.persistencia = persistencia;
+    }
+
+    public boolean salvarUsuario(Usuario usuario) {
+        try {
+            persistencia.save(usuario);
             return true;
-        }else{
+        } catch (Exception e) {
+            System.out.println("Erro ao salvar usuário: " + e.getMessage());
             return false;
         }
     }
 
+    public List<Usuario> listarUsuarios() {
+        return persistencia.listar();
+    }
+
+    public boolean login(String username, String password) {
+        List<Usuario> usuarios = listarUsuarios();
+        for (Usuario usuario : usuarios) {
+            if (usuario.getUsername().equals(username) && usuario.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
