@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class UsuarioService {
-    private Persistencia<Usuario> persistencia;
+    private final Persistencia<Usuario> persistencia;
 
     public UsuarioService(Persistencia<Usuario> persistencia) {
         this.persistencia = persistencia;

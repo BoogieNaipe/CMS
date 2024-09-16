@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class TUI {
-    private Scanner scanner;
-    private UsuarioService usuarioService;
-    private ConteudoService conteudoService;
+    private final Scanner scanner;
+    private final UsuarioService usuarioService;
+    private final ConteudoService conteudoService;
     private boolean logado;
 
     public TUI(UsuarioService usuarioService, ConteudoService conteudoService) {

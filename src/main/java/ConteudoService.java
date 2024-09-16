@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConteudoService {
-    private ConteudoHSQL conteudoHSQL;
+    private final ConteudoHSQL conteudoHSQL;
 
     public ConteudoService(ConteudoHSQL conteudoHSQL) {
         this.conteudoHSQL = conteudoHSQL;
