@@ -7,12 +7,13 @@ public class ConteudoHSQL {
     private Connection conexao = null;
 
     public Connection getConexao() throws SQLException {
-        if (conexao == null) {
+        if (conexao == null || conexao.isClosed()) {
             conexao = DriverManager.getConnection("jdbc:hsqldb:file:CMS", "admin", "admin");
         }
         return conexao;
     }
-    public void criarTabelas(){
+
+    public void criarTabelas() {
         String sql = "CREATE TABLE IF NOT EXISTS Conteudo (" +
                 "id INTEGER IDENTITY PRIMARY KEY," +
                 "titulo VARCHAR(250)," +
@@ -20,9 +21,9 @@ public class ConteudoHSQL {
                 "autor VARCHAR(250)," +
                 "FOREIGN KEY (autor) REFERENCES Usuario(username));";
 
-        try (Connection conexao = getConexao(); Statement stmt = conexao.createStatement()){
+        try (Connection conexao = getConexao(); Statement stmt = conexao.createStatement()) {
             stmt.executeUpdate(sql);
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Erro ao criar tabela Conteudo: " + e.getMessage());
         }
     }

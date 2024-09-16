@@ -8,17 +8,23 @@ public class UsuarioService {
     }
 
     public boolean salvarUsuario(Usuario usuario) {
-        try {
-            persistencia.save(usuario);
-            return true;
-        } catch (Exception e) {
-            System.out.println("Erro ao salvar usuário: " + e.getMessage());
-            return false;
-        }
+        return persistencia.save(usuario);
+    }
+
+    public boolean atualizarUsuario(Usuario usuario) {
+        return persistencia.atualizar(usuario);
     }
 
     public List<Usuario> listarUsuarios() {
         return persistencia.listar();
+    }
+
+    public boolean excluirUsuario(String username) {
+        return ((UsuarioHSQL) persistencia).remover(username);
+    }
+
+    public boolean alterarSenha(Usuario usuario) {
+        return persistencia.atualizar(usuario);
     }
 
     public boolean login(String username, String password) {

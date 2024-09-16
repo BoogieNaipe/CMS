@@ -26,10 +26,10 @@ public class TUI {
     private void exibirMenuPrincipal() {
         System.out.print("##--------------Menu Principal--------------##\n\n");
         System.out.print("|------------------------------------------|\n");
-        System.out.print("| 1.Login: Fazer login no sistema.         |\n");
-        System.out.print("| 2.Listar Conteúdos: Listar os conteúdos. |\n");
-        System.out.print("| 3. Primeiro Acesso? Criar usuário!       |\n");
-        System.out.print("| 4. Sair: Sair do sistema.                |\n");
+        System.out.print("| 1. Login: Fazer login no sistema.        |\n");
+        System.out.print("| 2. Listar Conteúdos: Listar conteúdos.   |\n");
+        System.out.print("| 3. Criar usuário: Primeiro acesso?       |\n");
+        System.out.print("| 4. Sair do sistema.                      |\n");
         System.out.print("|------------------------------------------|\n");
         System.out.print("Digite uma opção: ");
 
@@ -75,16 +75,16 @@ public class TUI {
     private void exibirMenuAdministracao() {
         System.out.print("##--------------Menu de Administração--------------##\n\n");
         System.out.print("|--------------------------------------------------|\n");
-        System.out.print("| 1. Criar Conteúdo: Cria novo conteúdo.           |\n");
-        System.out.print("| 2. Listar Conteúdos: Listar os conteúdos.        |\n");
-        System.out.print("| 3. Atualizar Conteúdo: Editar conteúdo.          |\n");
-        System.out.print("| 4. Excluir Conteúdo: Deletar conteúdo.           |\n");
-        System.out.print("| 5. Criar Usuário: Cria novo usuário.             |\n");
-        System.out.print("| 6. Listar Usuários: Listar os usuários.          |\n");
-        System.out.print("| 7. Alterar Usuário: Editar usuário.              |\n");
-        System.out.print("| 8. Excluir Usuário: Deletar usuário.             |\n");
-        System.out.print("| 9. Alterar Senha: Alterar sua própria senha.     |\n");
-        System.out.print("| 10. Logout: Sair do login.                       |\n");
+        System.out.print("| 1. Criar Conteúdo                                |\n");
+        System.out.print("| 2. Listar Conteúdos                              |\n");
+        System.out.print("| 3. Atualizar Conteúdo                            |\n");
+        System.out.print("| 4. Excluir Conteúdo                              |\n");
+        System.out.print("| 5. Criar Usuário                                 |\n");
+        System.out.print("| 6. Listar Usuários                               |\n");
+        System.out.print("| 7. Alterar Usuário                               |\n");
+        System.out.print("| 8. Excluir Usuário                               |\n");
+        System.out.print("| 9. Alterar Senha                                 |\n");
+        System.out.print("| 10. Logout                                       |\n");
         System.out.print("|--------------------------------------------------|\n");
         System.out.print("Digite uma opção: ");
 
@@ -108,7 +108,9 @@ public class TUI {
                 criarUsuario();
                 break;
             case 6:
-                usuarioService.listarUsuarios(); // Assumes listarUsuarios is implemented to display users
+                usuarioService.listarUsuarios().forEach(u -> {
+                    System.out.println("Usuário: " + u.getUsuario());
+                });
                 break;
             case 7:
                 alterarUsuario();
@@ -200,17 +202,47 @@ public class TUI {
     }
 
     private void alterarUsuario() {
-        // Implementação necessária
-        System.out.println("Funcionalidade ainda não implementada.");
+        System.out.println("Digite o nome de usuário a ser alterado:");
+        String username = scanner.nextLine();
+        System.out.println("Digite a nova senha:");
+        String password = scanner.nextLine();
+
+        Usuario usuario = new Usuario(username, password);
+        boolean sucesso = usuarioService.atualizarUsuario(usuario);
+
+        if (sucesso) {
+            System.out.println("Usuário atualizado com sucesso!");
+        } else {
+            System.out.println("Erro ao atualizar usuário.");
+        }
     }
 
     private void excluirUsuario() {
-        // Implementação necessária
-        System.out.println("Funcionalidade ainda não implementada.");
+        System.out.println("Digite o nome do usuário a ser excluído:");
+        String username = scanner.nextLine();
+
+        boolean sucesso = usuarioService.excluirUsuario(username);
+
+        if (sucesso) {
+            System.out.println("Usuário excluído com sucesso!");
+        } else {
+            System.out.println("Erro ao excluir usuário.");
+        }
     }
 
     private void alterarSenha() {
-        // Implementação necessária
-        System.out.println("Funcionalidade ainda não implementada.");
+        System.out.println("Digite o novo nome de usuário:");
+        String username = scanner.nextLine();
+        System.out.println("Digite a nova senha:");
+        String password = scanner.nextLine();
+
+        Usuario usuario = new Usuario(username, password);
+        boolean sucesso = usuarioService.alterarSenha(usuario);
+
+        if (sucesso) {
+            System.out.println("Senha alterada com sucesso!");
+        } else {
+            System.out.println("Erro ao alterar senha.");
+        }
     }
 }
