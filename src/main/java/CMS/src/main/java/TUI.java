@@ -212,7 +212,21 @@ public class TUI {
     }
 
     private void alterarSenha() {
+        System.out.println("Insira sua senha atual: ");
+        String senhaAtual = scanner.nextLine();
+        System.out.println("Insira sua nova senha: ");
+        String novaSenha = scanner.nextLine();
+        System.out.println("Confirme sua nova senha: ");
+        String confirmarNovaSenha = scanner.nextLine();
 
-        System.out.println("Funcionalidade ainda não implementada.");
+        if (novaSenha.equals(confirmarNovaSenha)) {
+            if(usuarioService.alterarSenha(senhaAtual, novaSenha)) {
+                System.out.println("Senha alterada com sucesso!");
+            } else {
+                System.out.println("Erro ao alterar a senha.");
+            }
+        }else{
+            System.out.println("Senhas diferentes. Tente novamente.");
+        }
     }
 }

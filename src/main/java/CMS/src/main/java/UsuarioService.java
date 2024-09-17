@@ -32,4 +32,9 @@ public class UsuarioService {
         }
         return false;
     }
+    public boolean alterarSenha(String senhaAtual, String novaSenha) {
+
+        return false;
+    }
+
 }
