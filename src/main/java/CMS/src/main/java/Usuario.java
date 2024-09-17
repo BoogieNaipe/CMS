@@ -1,3 +1,5 @@
+package CMS.src.main.java;
+
 public class Usuario {
     private String username;
     private String password;

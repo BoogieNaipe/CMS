@@ -1,3 +1,5 @@
+package CMS.src.main.java;
+
 import java.util.Scanner;
 
 public class TUI {
@@ -108,7 +110,7 @@ public class TUI {
                 criarUsuario();
                 break;
             case 6:
-                usuarioService.listarUsuarios(); // Assumes listarUsuarios is implemented to display users
+                usuarioService.listarUsuarios();
                 break;
             case 7:
                 alterarUsuario();
@@ -200,17 +202,17 @@ public class TUI {
     }
 
     private void alterarUsuario() {
-        // Implementação necessária
+
         System.out.println("Funcionalidade ainda não implementada.");
     }
 
     private void excluirUsuario() {
-        // Implementação necessária
+
         System.out.println("Funcionalidade ainda não implementada.");
     }
 
     private void alterarSenha() {
-        // Implementação necessária
+
         System.out.println("Funcionalidade ainda não implementada.");
     }
 }

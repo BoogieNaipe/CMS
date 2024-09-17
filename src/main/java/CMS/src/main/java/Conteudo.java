@@ -1,8 +1,10 @@
+package CMS.src.main.java;
+
 public class Conteudo {
     private int id;
-    private String titulo;
-    private String texto;
-    private String autor;
+    private final String titulo;
+    private final String texto;
+    private final String autor;
 
     public Conteudo(String titulo, String texto, String autor) {
         this.titulo = titulo;

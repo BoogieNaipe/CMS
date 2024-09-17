@@ -1,3 +1,5 @@
+package CMS.src.main.java;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,14 +88,4 @@ public class UsuarioHSQL implements Persistencia<Usuario> {
         }
     }
 
-    public void closeConnection() {
-        if (conexao != null) {
-            try {
-                conexao.close();
-                System.out.println("Conexão fechada.");
-            } catch (SQLException e) {
-                System.out.println("Erro ao fechar conexão: " + e.getMessage());
-            }
-        }
-    }
 }
