@@ -1,7 +1,9 @@
+package CMS.src.main.java;
+
 public class ArtPrinter {
     public static void printArt() {
         String art =
-                "                                                                                           \n" +
+                        "                                                                                           \n" +
                         "                                                                                           \n" +
                         "                                                                                           \n" +
                         "                                                                                           \n" +
