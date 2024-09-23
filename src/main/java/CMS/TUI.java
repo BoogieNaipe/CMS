@@ -155,9 +155,14 @@ public class TUI {
 
     private void listarConteudos() {
         List<Conteudo> conteudos = conteudoService.listarConteudos();
+        System.out.println("Lista de Conteúdos:");
+        System.out.println("-------------------");
+        System.out.printf("%-5s %-20s %-30s%n", "ID", "Título", "Descrição");
+        System.out.println("-------------------");
         for (Conteudo conteudo : conteudos) {
-            System.out.println("ID: " + conteudo.getId() + ", Título: " + conteudo.getTitulo() + ", Autor: " + conteudo.getAutor().getNome());
+            System.out.printf("%-5d %-20s %-30s%n", conteudo.getId(), conteudo.getTitulo(), conteudo.getDescricao());
         }
+        System.out.println("-------------------");
     }
 
     private void atualizarConteudo() {
@@ -202,9 +207,14 @@ public class TUI {
 
     private void listarUsuarios() {
         List<Usuario> usuarios = usuarioService.listarUsuarios();
+        System.out.println("Lista de Usuários:");
+        System.out.println("------------------");
+        System.out.printf("%-5s %-20s%n", "ID", "Nome");
+        System.out.println("------------------");
         for (Usuario usuario : usuarios) {
-            System.out.println("ID: " + usuario.getId() + ", Nome: " + usuario.getNome());
+            System.out.printf("%-5d %-20s%n", usuario.getId(), usuario.getNome());
         }
+        System.out.println("------------------");
     }
 
     private void alterarUsuario() {
