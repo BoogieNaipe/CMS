@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String JDBC_URL = "jdbc:hsqldb:file:C:/Users/marce/OneDrive/Área de Trabalho/CMSDB/CMS";
+    private static final String JDBC_URL = "jdbc:hsqldb:mem:CMS;";
     private static final String JDBC_USER = "admin";
     private static final String JDBC_PASSWORD = "admin";
 
